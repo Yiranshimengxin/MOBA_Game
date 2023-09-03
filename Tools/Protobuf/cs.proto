@@ -1,0 +1,12 @@
+syntax="proto3";
+
+option go_package="./;pb";
+package pb;
+
+message Head
+{
+	int32 id=1;  //协议id
+	bytes data=2;  //协议里的内容
+}
+
+

@@ -20,7 +20,7 @@ public class Main : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        NetWorkManager.Instance.Update();
     }
 
     private void FixedUpdate()

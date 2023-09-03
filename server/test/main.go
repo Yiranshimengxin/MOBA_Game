@@ -3,6 +3,9 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"sync"
+	"sync/atomic"
+	"time"
 )
 
 // 模仿C#枚举类型
@@ -59,7 +62,36 @@ func main() {
 	//fmt.Println(p6)
 	//fmt.Println(p7)
 
-	testTypeValue()
+	//testTypeValue()
+
+	//testIfElse()
+
+	//testFor()
+
+	//testSwitchCase()
+	/////////////////////////////////////////////////////////////////////
+	//
+	//ch = make(chan int)
+	//wg.Add(2)
+	//
+	//go running(1)
+	//go running1()
+	//
+	////var input string
+	////fmt.Scanln(&input)
+	//
+	//wg.Wait()
+	//fmt.Printf("主程序退出,count=%d\n", atomicInt.Load())
+	/////////////////////////////////////////////////////////////////////
+
+	/////////////////////////////////////////////////////////////////////
+	ch1 = make(chan string)
+	wg.Add(2)
+	go runingWrite()
+	go runingRead()
+	wg.Wait()
+	fmt.Printf("主程序退出,此时读取到的字符串为%n", ch1)
+	/////////////////////////////////////////////////////////////////////
 }
 
 func testTypeValue() {
@@ -162,4 +194,140 @@ func testTypeValue() {
 
 func 多返回值() (int, int, int, string) {
 	return 1, 2, 3, "world"
+}
+
+func testIfElse() {
+	ten := 11
+	if ten > 10 {
+		fmt.Println("ten>10")
+	} else if ten < 10 {
+		fmt.Println("ten<10")
+	} else {
+		fmt.Println("ten=10")
+	}
+
+	if err := Connect(); err != nil {
+		fmt.Println(err.Error())
+	} else {
+		fmt.Println("connect success")
+	}
+}
+
+func Connect() error {
+	return nil
+}
+
+func testFor() {
+	for i := 0; i < 10; i++ {
+		fmt.Println(i)
+	}
+
+	i := 0
+	for {
+		i++
+		if i > 10 {
+			break
+		}
+		if i == 6 {
+			continue
+		}
+		fmt.Println(i)
+	}
+}
+
+func testSwitchCase() {
+	cond := 10
+	switch cond {
+	case 1:
+		fmt.Println(1)
+	case 2:
+		fmt.Println(2)
+	default:
+		fmt.Println("default")
+	}
+}
+
+func testGoto() {
+	for i := 0; i < 10; i++ {
+		fmt.Println(i)
+		if i == 5 {
+			goto exit
+		}
+	}
+
+exit:
+	fmt.Println("exit")
+}
+
+func testFunc(a int, b int) (int, int) {
+	return a, b
+}
+
+//func testFunc2() {
+//	fn := testReturnFunc(1, 2, "name")
+//
+//}
+
+func testReturnFunc(a int, b int, c string) func(a int, b int, c string) (int, int, string) {
+	return func(a, b int, c string) (int, int, string) {
+		fmt.Println("testReturnFunc")
+		return a, b, c
+	}
+}
+
+//var lock sync.Mutex
+//var count int = 0
+
+var atomicInt atomic.Int64
+
+var wg sync.WaitGroup
+
+// 定义一个int类型的通道
+var ch chan int
+
+func running(index int) {
+
+	for i := 0; i < 100; i++ {
+		//atomicInt.Add(1)
+		ch <- i
+	}
+
+	//fmt.Printf("index=%d,count=%d \n", index, atomicInt.Load())
+	wg.Done()
+}
+
+func running1() {
+	for data := range ch {
+		fmt.Printf("running1 %d\n", data)
+		if data == 99 {
+			break
+		}
+	}
+	wg.Done()
+}
+
+// //////////////////////////////////////////////////////////////////////////
+var ch1 chan string
+
+func runingWrite() {
+	for i := 0; i < 10; i++ {
+		if i == 5 {
+			ch1 <- "over"
+			break
+		} else {
+			ch1 <- "hello"
+		}
+		time.Sleep(1 * time.Second)
+	}
+	wg.Done()
+}
+
+func runingRead() {
+	for s := range ch1 {
+		fmt.Printf("runningWrite %s\n", s)
+		if s == "over" {
+			break
+		}
+	}
+	wg.Done()
 }

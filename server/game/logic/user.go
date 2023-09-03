@@ -1,6 +1,9 @@
 package logic
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 func NewUser() *User {
 	//u:=new(User)
@@ -23,4 +26,27 @@ type User struct {
 	LastOffLineTime int64  // 最后下线时间
 	loginTIme       int64  // 登录时间
 	Money           int64  // 金币
+}
+
+type Writer interface {
+	Write([]byte) (int, error)
+	Send([]byte, int) (int, error)
+}
+
+//type UserInterface interface {
+//	Login(name string,password string)
+//	Logout()
+//}
+
+func (u *User) Write([]byte) (int, error) {
+	return 0, nil
+}
+
+// User实现了Send接口
+func (u *User) Send([]byte, int) (int, error) {
+	return 0, nil
+}
+
+func (u *User) Update() {
+	fmt.Printf("玩家%d更新\n", u.Uid)
 }

@@ -37,6 +37,6 @@ public class LogManager : Singleton<LogManager>
     //error 报错
     public void ErrorLog(string text)
     {
-        //Debug.Log(text);
+        m_Log.Errorf(text);
     }
 }
