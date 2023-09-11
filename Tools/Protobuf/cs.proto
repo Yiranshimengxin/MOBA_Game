@@ -9,4 +9,3 @@ message Head
 	bytes data=2;  //协议里的内容
 }
 
-

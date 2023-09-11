@@ -66,13 +66,13 @@
     <Compile Include="Assets\Scripts\Manager\VideoManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Manager\LuaManager.cs" />
+    <Compile Include="Assets\Scripts\NetMessage\Protocol.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameFrame\Net\TcpClient.cs" />
     <Compile Include="Assets\Scripts\Manager\LogManager.cs" />
     <Compile Include="Assets\Scripts\Manager\PatchManager.cs" />
     <Compile Include="Assets\Scripts\GameFrame\Net\SocketInputStream.cs" />
     <Compile Include="Assets\Scripts\Manager\ResourceManager.cs" />
-    <Compile Include="Assets\Scripts\NetMessage\Cs.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -324,6 +324,9 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Unity\2022.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Assets\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="ReportGeneratorMerged">
       <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@1.2.3\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
     </Reference>
@@ -333,8 +336,14 @@
     <Reference Include="Google.Protobuf">
       <HintPath>Assets\Plugins\Google.Protobuf.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Assets\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    <Reference Include="Unity.Android.Types">
+      <HintPath>C:\Unity\2022.3.1f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Android.Gradle">
+      <HintPath>C:\Unity\2022.3.1f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Gradle.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Android.GradleProject">
+      <HintPath>C:\Unity\2022.3.1f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.GradleProject.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Unity\2022.3.1f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
