@@ -60,9 +60,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Common\Singleton.cs" />
     <Compile Include="Assets\Scripts\GameFrame\Log\LogSystem.cs" />
+    <Compile Include="Assets\Scripts\GameFrame\Net\ArrayBuffer.cs" />
+    <Compile Include="Assets\Scripts\GameFrame\Net\BytesHelper.cs" />
     <Compile Include="Assets\Scripts\Main.cs" />
     <Compile Include="Assets\Scripts\Manager\NetWorkManager.cs" />
-    <Compile Include="Assets\Scripts\GameFrame\Net\SocketOutputStream.cs" />
     <Compile Include="Assets\Scripts\Manager\VideoManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Manager\LuaManager.cs" />
@@ -71,7 +72,6 @@
     <Compile Include="Assets\Scripts\GameFrame\Net\TcpClient.cs" />
     <Compile Include="Assets\Scripts\Manager\LogManager.cs" />
     <Compile Include="Assets\Scripts\Manager\PatchManager.cs" />
-    <Compile Include="Assets\Scripts\GameFrame\Net\SocketInputStream.cs" />
     <Compile Include="Assets\Scripts\Manager\ResourceManager.cs" />
   </ItemGroup>
   <ItemGroup>

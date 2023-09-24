@@ -11,11 +11,16 @@ public class NetWorkManager : Singleton<NetWorkManager>, ISocketCallBack
         m_SocketClient = new TcpClient();
         m_SocketClient.Init(this);
         LogManager.Instance.DebugLog("网络管理初始化");
+
+        Connect("127.0.0.1", 10086);
     }
 
     public void OnConnect()
     {
-
+        Debug.Log("链接服务器成功！");
+        Pb.PBLoginReq req = new Pb.PBLoginReq();
+        req.Uid = "test";
+        Send((int)Pb.MsgID.Login, req);
     }
 
     public void OnDisconnect()

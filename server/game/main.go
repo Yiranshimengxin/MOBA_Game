@@ -19,6 +19,7 @@ var (
 func main() {
 	log.Info("game start ...")
 
+	//程序里的信号，设置信号监听
 	signal.Notify(SigChan, syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
 	/*
 		HUP 1	控制台中的终端/程序中断
