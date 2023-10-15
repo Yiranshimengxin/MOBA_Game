@@ -43,8 +43,8 @@ public class BytesHelper : MonoBehaviour
         {
             byteData[index++] = (byte)(netData[3]);
             byteData[index++] = (byte)(netData[2]);
-            byteData[index++] = (byte)(netData[2]);
             byteData[index++] = (byte)(netData[1]);
+            byteData[index++] = (byte)(netData[0]);
         }
         return index;
     }

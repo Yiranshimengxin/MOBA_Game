@@ -6,7 +6,23 @@ package pb;
 enum MsgID
 {
     INVALID=0;
-    LOGIN=1000;
+    LOGIN_REQ=1000;  //客户端往服务器发送的登录id
+    LOGIN_RSP=1001;  //服务器往客户端返回的登录id
+    MATCH_REQ=1002;
+    MATCH_RSP=1003;
+    NOTIFY_CONFIRM=1004;
+    CONFIRM_REQ=1005;
+    NOTIFY_SELECT=1006;
+    SELECT_REQ=1007;
+    NOTIFY_LOAD=1008;
+    LOAD_PROGRESS_REQ=1009;
+    NOTIFY_PROGRESS=1010;
+    BATTLE_START_REQ=1011;
+    NOTIFY_BATTLE_START=1012;
+    QPERATE_REQ=1013;
+    NOTIFY_OPERATE=1014;
+    BATTLE_END_REQ=1015;
+    NOTIFY_BATTLE_END=1016;
 }
 
 message Head
@@ -20,7 +36,40 @@ message PBLoginReq
     string uid=1;
 }
 
+message PBLoginRsp{
+    string account=1;
+    uint64 uid=2;
+}
+
 message PBMatchReq
 {
-    string uid=1;
+    enum pvpType{
+        PVP_1V1=0;
+        PVP_2V2=1;
+        PVP_5V5=2;
+    }
+    pvpType type=1;
+}
+
+message PBMtachRsp{
+    int32 preTime=1;
+}
+
+message PBConfirmReq{
+
+}
+
+message PBConfirmData{
+    int32 iconIndex=1;
+    bool confirmDone=2;
+}
+
+message PBnotifyConfirm{
+    int32 roomId=1;
+    bool dismiss=2;
+    repeated PBConfirmData confirmArr=3;
+}
+
+message PBSelectReq{
+    int32 heroId=1;
 }

@@ -39,7 +39,7 @@ func (g *Game) Loop() {
 }
 
 func (g *Game) HandleMsg(c *gate.Client, id uint32, data []byte) {
-	if id == uint32(pb.MsgID_LOGIN) {
+	if id == uint32(pb.MsgID_LOGIN_REQ) {
 		g.OnLogin(c, id, data)
 	} else {
 		if u, ok := g.users[c.GetFD()]; ok {
@@ -62,5 +62,11 @@ func (g *Game) OnLogin(c *gate.Client, id uint32, data []byte) {
 
 	u := NewUser(c, g.userID, req.GetUid())
 	g.users[c.GetFD()] = u
+	//u.registerMsgHandler()
 	g.userID++
+
+	rsp := &pb.PBLoginRsp{}
+	rsp.Uid = uint64(g.userID)
+	rsp.Account = req.GetUid()
+	c.Send(uint32(pb.MsgID_LOGIN_RSP), rsp)
 }

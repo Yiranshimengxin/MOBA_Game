@@ -136,7 +136,7 @@ public class TcpClient
         }
         if (m_Socket.Connected)
         {
-            return false;
+            return true;
         }
         if (m_SocketStatus == ConnectStatus.CONNECTED)
         {

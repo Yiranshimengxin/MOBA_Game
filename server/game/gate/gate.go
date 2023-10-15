@@ -12,6 +12,7 @@ type Server struct {
 	AcceptChan chan *Client
 	close      chan struct{} //信号量，查看服务器是否关闭
 	listener   net.Listener
+	clientId   int64
 }
 
 func NewServer(host string, port int) *Server {
@@ -20,6 +21,7 @@ func NewServer(host string, port int) *Server {
 		port:       port,
 		AcceptChan: make(chan *Client, 100),
 		close:      make(chan struct{}),
+		clientId:   0,
 	}
 }
 
@@ -60,8 +62,8 @@ func (s *Server) Run() {
 		if err != nil {
 			log.Fatal(err.Error())
 		}
-
-		client := NewClient(conn, &MsgProtocol{})
+		s.clientId += 1
+		client := NewClient(conn, s.clientId, &MsgProtocol{})
 		s.AcceptChan <- client
 	}
 }

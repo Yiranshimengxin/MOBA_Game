@@ -12,7 +12,7 @@ type MsgHandle interface {
 	HandleMsg(c *Client, id uint32, data []byte)
 }
 
-func NewClient(conn net.Conn, protocol *MsgProtocol) *Client {
+func NewClient(conn net.Conn, clientId int64, protocol *MsgProtocol) *Client {
 	c := &Client{
 		conn:     conn,
 		protocol: protocol,
@@ -23,9 +23,11 @@ func NewClient(conn net.Conn, protocol *MsgProtocol) *Client {
 		f, err := s.File()
 		if err != nil {
 			log.Error("new connection %s", err.Error())
-			return c
+			//return c
+			c.fd = uint64(clientId)
+		} else {
+			c.fd = uint64(f.Fd())
 		}
-		c.fd = uint64(f.Fd())
 	}
 	return c
 }

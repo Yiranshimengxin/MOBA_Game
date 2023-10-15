@@ -30,7 +30,7 @@ func (p *Packet) GetData() []byte {
 func (p *Packet) Serialize() []byte {
 	dataLen := uint32(len(p.data))
 	buff := make([]byte, MinPacketLen+dataLen)
-	binary.BigEndian.PutUint32(buff[DataLen:], DataLen)
+	binary.BigEndian.PutUint32(buff, dataLen)
 	if dataLen > 0 {
 		copy(buff[MinPacketLen:], p.data)
 	}

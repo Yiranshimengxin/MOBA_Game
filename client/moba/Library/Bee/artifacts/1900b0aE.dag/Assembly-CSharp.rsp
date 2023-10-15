@@ -362,6 +362,7 @@
 "Assets/Scripts/GameFrame/Net/ArrayBuffer.cs"
 "Assets/Scripts/GameFrame/Net/BytesHelper.cs"
 "Assets/Scripts/GameFrame/Net/TcpClient.cs"
+"Assets/Scripts/Logic/NetPB/Protocol.cs"
 "Assets/Scripts/Main.cs"
 "Assets/Scripts/Manager/GameManager.cs"
 "Assets/Scripts/Manager/LogManager.cs"
@@ -371,7 +372,6 @@
 "Assets/Scripts/Manager/ResourceManager.cs"
 "Assets/Scripts/Manager/SoundManager.cs"
 "Assets/Scripts/Manager/VideoManager.cs"
-"Assets/Scripts/NetMessage/Protocol.cs"
 -langversion:9.0
 
 /deterministic

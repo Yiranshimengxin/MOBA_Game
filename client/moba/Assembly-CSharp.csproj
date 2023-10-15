@@ -67,11 +67,11 @@
     <Compile Include="Assets\Scripts\Manager\VideoManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Manager\LuaManager.cs" />
-    <Compile Include="Assets\Scripts\NetMessage\Protocol.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameFrame\Net\TcpClient.cs" />
     <Compile Include="Assets\Scripts\Manager\LogManager.cs" />
     <Compile Include="Assets\Scripts\Manager\PatchManager.cs" />
+    <Compile Include="Assets\Scripts\Logic\NetPB\Protocol.cs" />
     <Compile Include="Assets\Scripts\Manager\ResourceManager.cs" />
   </ItemGroup>
   <ItemGroup>
